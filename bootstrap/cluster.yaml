@@ -190,7 +190,7 @@ metadata:
   namespace: default
 spec:
   clusterName: capv-mgt
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels: {}
   template:
