@@ -3,10 +3,10 @@ kind: Kustomization
 resources:
 - cluster01-ns.yaml
 - cluster01.yaml
-- ../calico
+- ../calico/calico-configmap.yaml
 
 commonLabels:
   cni: calico
 
-#patchesStrategicMerge:
-#- cluster01-param.yaml
+patchesStrategicMerge:
+- cluster01-param.yaml
