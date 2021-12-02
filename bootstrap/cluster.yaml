@@ -151,7 +151,7 @@ spec:
       apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
       kind: VSphereMachineTemplate
       name: capv-mgt
-  replicas: 2
+  replicas: 1
   version: v1.21.1
 ---
 apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
@@ -190,7 +190,7 @@ metadata:
   namespace: default
 spec:
   clusterName: capv-mgt
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels: {}
   template:
