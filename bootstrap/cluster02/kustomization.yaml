@@ -7,6 +7,3 @@ resources:
 namespace: cluster02
 commonLabels:
   cni: calico
-
-#patchesStrategicMerge:
-#- cluster01-param.yaml
