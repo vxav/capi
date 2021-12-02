@@ -2,43 +2,43 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   labels:
-    cluster.x-k8s.io/cluster-name: capv-mgt
-  name: capv-mgt
-  namespace: default
+    cluster.x-k8s.io/cluster-name: cluster01
+  name: cluster01
+  namespace: cluster01
 spec:
   clusterNetwork:
     pods:
       cidrBlocks:
-      - 172.32.0.0/16
+      - 172.16.0.0/16
   controlPlaneRef:
     apiVersion: controlplane.cluster.x-k8s.io/v1beta1
     kind: KubeadmControlPlane
-    name: capv-mgt
+    name: cluster01
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: VSphereCluster
-    name: capv-mgt
+    name: cluster01
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: VSphereCluster
 metadata:
-  name: capv-mgt
-  namespace: default
+  name: cluster01
+  namespace: cluster01
 spec:
   controlPlaneEndpoint:
-    host: 192.168.1.145
+    host: 192.168.1.147
     port: 6443
   identityRef:
     kind: Secret
-    name: capv-mgt
+    name: cluster01
   server: 192.168.1.102
   thumbprint: D5:82:6E:52:6E:69:F3:C8:B6:7F:E9:CA:20:06:A8:B6:A1:70:97:0E
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: VSphereMachineTemplate
 metadata:
-  name: capv-mgt
-  namespace: default
+  name: cluster01
+  namespace: cluster01
 spec:
   template:
     spec:
@@ -62,8 +62,8 @@ spec:
 apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: KubeadmControlPlane
 metadata:
-  name: capv-mgt
-  namespace: default
+  name: cluster01
+  namespace: cluster01
 spec:
   kubeadmConfigSpec:
     clusterConfiguration:
@@ -91,7 +91,7 @@ spec:
             - name: vip_leaderelection
               value: "true"
             - name: vip_address
-              value: 192.168.1.145
+              value: 192.168.1.147
             - name: vip_interface
               value: eth0
             - name: vip_leaseduration
@@ -150,15 +150,15 @@ spec:
     infrastructureRef:
       apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
       kind: VSphereMachineTemplate
-      name: capv-mgt
+      name: cluster01
   replicas: 1
   version: v1.21.1
 ---
 apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
 kind: KubeadmConfigTemplate
 metadata:
-  name: capv-mgt-md-0
-  namespace: default
+  name: cluster01-md-0
+  namespace: cluster01
 spec:
   template:
     spec:
@@ -185,42 +185,42 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
   labels:
-    cluster.x-k8s.io/cluster-name: capv-mgt
-  name: capv-mgt-md-0
-  namespace: default
+    cluster.x-k8s.io/cluster-name: cluster01
+  name: cluster01-md-0
+  namespace: cluster01
 spec:
-  clusterName: capv-mgt
-  replicas: 2
+  clusterName: cluster01
+  replicas: 1
   selector:
     matchLabels: {}
   template:
     metadata:
       labels:
-        cluster.x-k8s.io/cluster-name: capv-mgt
+        cluster.x-k8s.io/cluster-name: cluster01
     spec:
       bootstrap:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
           kind: KubeadmConfigTemplate
-          name: capv-mgt-md-0
-      clusterName: capv-mgt
+          name: cluster01-md-0
+      clusterName: cluster01
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: VSphereMachineTemplate
-        name: capv-mgt
+        name: cluster01
       version: v1.21.1
 ---
 apiVersion: addons.cluster.x-k8s.io/v1beta1
 kind: ClusterResourceSet
 metadata:
   labels:
-    cluster.x-k8s.io/cluster-name: capv-mgt
-  name: capv-mgt-crs-0
-  namespace: default
+    cluster.x-k8s.io/cluster-name: cluster01
+  name: cluster01-crs-0
+  namespace: cluster01
 spec:
   clusterSelector:
     matchLabels:
-      cluster.x-k8s.io/cluster-name: capv-mgt
+      cluster.x-k8s.io/cluster-name: cluster01
   resources:
   - kind: Secret
     name: vsphere-csi-controller
@@ -246,8 +246,8 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: capv-mgt
-  namespace: default
+  name: cluster01
+  namespace: cluster01
 stringData:
   password: P@ssw0rd
   username: svc-capv@vsphere.local
@@ -256,7 +256,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: vsphere-csi-controller
-  namespace: default
+  namespace: cluster01
 stringData:
   data: |
     apiVersion: v1
@@ -376,7 +376,7 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-controller-role
-  namespace: default
+  namespace: cluster01
 ---
 apiVersion: v1
 data:
@@ -396,13 +396,13 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-controller-binding
-  namespace: default
+  namespace: cluster01
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: csi-vsphere-config
-  namespace: default
+  namespace: cluster01
 stringData:
   data: |
     apiVersion: v1
@@ -413,7 +413,7 @@ stringData:
     stringData:
       csi-vsphere.conf: |+
         [Global]
-        cluster-id = "default/capv-mgt"
+        cluster-id = "cluster01/cluster01"
 
         [VirtualCenter "192.168.1.102"]
         user = "svc-capv@vsphere.local"
@@ -438,7 +438,7 @@ data:
 kind: ConfigMap
 metadata:
   name: csi.vsphere.vmware.com
-  namespace: default
+  namespace: cluster01
 ---
 apiVersion: v1
 data:
@@ -571,7 +571,7 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-node
-  namespace: default
+  namespace: cluster01
 ---
 apiVersion: v1
 data:
@@ -696,13 +696,13 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-controller
-  namespace: default
+  namespace: cluster01
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: cloud-controller-manager
-  namespace: default
+  namespace: cluster01
 stringData:
   data: |
     apiVersion: v1
@@ -716,7 +716,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: cloud-provider-vsphere-credentials
-  namespace: default
+  namespace: cluster01
 stringData:
   data: |
     apiVersion: v1
@@ -933,4 +933,4 @@ data:
 kind: ConfigMap
 metadata:
   name: cpi-manifests
-  namespace: default
+  namespace: cluster01
