@@ -1,0 +1,11 @@
+patchesStrategicMerge:
+- cluster01-param.yaml
+
+namespace: cluster01
+
+resources:
+- cluster01.yaml
+- ../calico
+
+commonLabels:
+- cni: calico
