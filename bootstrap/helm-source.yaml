@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository 
+metadata:
+  name: capi-vsphere 
+spec:
+  interval: m
+  ref:
+    branch: main
+  url: https://github.com/vxav/capi
