@@ -4,7 +4,7 @@ metadata:
   labels:
     cluster.x-k8s.io/cluster-name: cluster02
   name: cluster02
-  namespace: default
+  namespace: cluster02
 spec:
   clusterNetwork:
     pods:
@@ -23,7 +23,7 @@ apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: VSphereCluster
 metadata:
   name: cluster02
-  namespace: default
+  namespace: cluster02
 spec:
   controlPlaneEndpoint:
     host: 192.168.1.146
@@ -38,7 +38,7 @@ apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: VSphereMachineTemplate
 metadata:
   name: cluster02
-  namespace: default
+  namespace: cluster02
 spec:
   template:
     spec:
@@ -63,7 +63,7 @@ apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: KubeadmControlPlane
 metadata:
   name: cluster02
-  namespace: default
+  namespace: cluster02
 spec:
   kubeadmConfigSpec:
     clusterConfiguration:
@@ -158,7 +158,7 @@ apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
 kind: KubeadmConfigTemplate
 metadata:
   name: cluster02-md-0
-  namespace: default
+  namespace: cluster02
 spec:
   template:
     spec:
@@ -187,7 +187,7 @@ metadata:
   labels:
     cluster.x-k8s.io/cluster-name: cluster02
   name: cluster02-md-0
-  namespace: default
+  namespace: cluster02
 spec:
   clusterName: cluster02
   replicas: 1
@@ -216,7 +216,7 @@ metadata:
   labels:
     cluster.x-k8s.io/cluster-name: cluster02
   name: cluster02-crs-0
-  namespace: default
+  namespace: cluster02
 spec:
   clusterSelector:
     matchLabels:
@@ -247,7 +247,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: cluster02
-  namespace: default
+  namespace: cluster02
 stringData:
   password: P@ssw0rd
   username: svc-capv@vsphere.local
@@ -256,7 +256,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: vsphere-csi-controller
-  namespace: default
+  namespace: cluster02
 stringData:
   data: |
     apiVersion: v1
@@ -376,7 +376,7 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-controller-role
-  namespace: default
+  namespace: cluster02
 ---
 apiVersion: v1
 data:
@@ -396,13 +396,13 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-controller-binding
-  namespace: default
+  namespace: cluster02
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: csi-vsphere-config
-  namespace: default
+  namespace: cluster02
 stringData:
   data: |
     apiVersion: v1
@@ -413,7 +413,7 @@ stringData:
     stringData:
       csi-vsphere.conf: |+
         [Global]
-        cluster-id = "default/cluster02"
+        cluster-id = "cluster02/cluster02"
 
         [VirtualCenter "192.168.1.102"]
         user = "svc-capv@vsphere.local"
@@ -438,7 +438,7 @@ data:
 kind: ConfigMap
 metadata:
   name: csi.vsphere.vmware.com
-  namespace: default
+  namespace: cluster02
 ---
 apiVersion: v1
 data:
@@ -571,7 +571,7 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-node
-  namespace: default
+  namespace: cluster02
 ---
 apiVersion: v1
 data:
@@ -696,13 +696,13 @@ data:
 kind: ConfigMap
 metadata:
   name: vsphere-csi-controller
-  namespace: default
+  namespace: cluster02
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: cloud-controller-manager
-  namespace: default
+  namespace: cluster02
 stringData:
   data: |
     apiVersion: v1
@@ -716,7 +716,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: cloud-provider-vsphere-credentials
-  namespace: default
+  namespace: cluster02
 stringData:
   data: |
     apiVersion: v1
@@ -933,4 +933,4 @@ data:
 kind: ConfigMap
 metadata:
   name: cpi-manifests
-  namespace: default
+  namespace: cluster02
