@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- cluster02-ns.yaml
+- cluster02.yaml
+- ../calico
+namespace: cluster02
+commonLabels:
+  cni: calico
+
+#patchesStrategicMerge:
+#- cluster01-param.yaml
