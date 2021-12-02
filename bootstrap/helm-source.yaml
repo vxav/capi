@@ -4,7 +4,7 @@ kind: GitRepository
 metadata:
   name: capi-vsphere 
 spec:
-  interval: m
+  interval: 1m
   ref:
     branch: main
   url: https://github.com/vxav/capi
