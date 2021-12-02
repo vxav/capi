@@ -4,7 +4,7 @@ resources:
 - cluster.yaml
 patchesStrategicMerge:
 - |-
-  apiVersion: cluster.x-k8s.io/v1alpha3
+  apiVersion: cluster.x-k8s.io/v1beta1
   kind: Cluster
   metadata:
     name: capv-mgt
