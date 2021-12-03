@@ -18,3 +18,5 @@ spec:
   values:
     cluster:
       name: test
+    workers:
+      replicas: 2
