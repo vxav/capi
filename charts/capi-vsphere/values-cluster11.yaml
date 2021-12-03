@@ -1,0 +1,10 @@
+cluster:
+  name: cluster-11
+  cidrblocks: 172.11.0.0/16
+  vip: 192.168.1.150
+
+controllers:
+  replicas: 1
+
+workers:
+  replicas: 1
