@@ -190,7 +190,7 @@ metadata:
   namespace: cluster01
 spec:
   clusterName: cluster01
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels: {}
   template:
