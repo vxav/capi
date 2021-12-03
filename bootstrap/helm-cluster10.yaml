@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: ./charts/capi-vsphere/capi-vsphere-1.0.0.tgz
+      chart: ./charts/capi-vsphere
       sourceRef:
         kind: GitRepository
         name: capi-vsphere
