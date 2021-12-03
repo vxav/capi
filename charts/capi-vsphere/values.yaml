@@ -1,0 +1,19 @@
+vmware:
+  vcenter: 192.168.1.102
+  thumbprint: D5:82:6E:52:6E:69:F3:C8:B6:7F:E9:CA:20:06:A8:B6:A1:70:97:0E
+  datacenter: LAB01-DC
+  datastore: LAB01-VSAN
+  password: P@ssw0rd
+  username: svc-capv@vsphere.local
+  tempmate: ubuntu-2004-kube-v1.21.2+vmware.1
+
+cluster:
+  name: default
+  cidrblocks: 172.32.0.0/16
+  vip: 192.168.1.145
+
+controllers:
+  replicas: 1
+
+workers:
+  replicas: 1
