@@ -15,5 +15,6 @@ spec:
       interval: 1m
       valuesFiles:
         - charts/capi-vsphere/values.yaml 
-      values:
-        cluster.name: test
+  values:
+    cluster:
+      name: test
