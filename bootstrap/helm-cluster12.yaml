@@ -16,11 +16,4 @@ spec:
       valuesFiles:
         - charts/capi-vsphere/values.yaml 
       values:
-        cluster:
-          name: default
-          cidrblocks: 172.32.0.0/16
-          vip: 192.168.1.212
-        controllers:
-          replicas: 1
-        workers:
-          replicas: 2
+        cluster.name: test
