@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: cluster-release-10
 spec:
-  interval: 30s
+  interval: 1m
   chart:
     spec:
       chart: ./charts/capi-vsphere
