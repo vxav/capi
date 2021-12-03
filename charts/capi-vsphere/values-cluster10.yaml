@@ -16,4 +16,4 @@ controllers:
   replicas: 1
 
 workers:
-  replicas: 1
+  replicas: 2
