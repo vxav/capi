@@ -8,12 +8,12 @@ vmware:
   template: ubuntu-2004-kube-v1.21.2+vmware.1
 
 cluster:
-  name: my-test-cluster
-  cidrblocks: 172.45.0.0/16
+  name: cluster-10
+  cidrblocks: 172.10.0.0/16
   vip: 192.168.1.149
 
 controllers:
   replicas: 1
 
 workers:
-  replicas: 2
+  replicas: 1
