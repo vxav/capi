@@ -30,4 +30,4 @@ spec:
     controllers:
       replicas: 1
     workers:
-      replicas: 3
+      replicas: 1
