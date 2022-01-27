@@ -10,7 +10,7 @@ vmware:
   resourcepool: '*/Resources'
   folder: CAPV
   memorymib: 4096
-  numCPUs: 2
+  numcpus: 2
 
 cluster:
   name: default
