@@ -48,13 +48,13 @@ spec:
       datastore: {{ .Values.vmware.datastore }}
       diskGiB: 25
       folder: {{ .Values.vmware.folder }}
-      memoryMiB: {{ .Values.vmware.memoryMiB }}
+      memoryMiB: {{ .Values.vmware.memorymib }}
       network:
         devices:
         - dhcp4: true
           networkName: {{ .Values.vmware.portgroup }}
-      numCPUs: {{ .Values.vmware.numCPUs }}
-      resourcePool: {{ .Values.vmware.resourcePool }}
+      numCPUs: {{ .Values.vmware.numcpus }}
+      resourcePool: {{ .Values.vmware.resourcepool }}
       server: {{ .Values.vmware.vcenter }}
       storagePolicyName: ""
       template: {{ .Values.vmware.template }}
