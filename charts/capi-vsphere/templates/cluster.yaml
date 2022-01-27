@@ -54,7 +54,7 @@ spec:
         - dhcp4: true
           networkName: {{ .Values.vmware.portgroup }}
       numCPUs: {{ .Values.vmware.numcpus }}
-      resourcePool: {{ .Values.vmware.resourcepool }}
+      resourcePool: '*/Resources'
       server: {{ .Values.vmware.vcenter }}
       storagePolicyName: ""
       template: {{ .Values.vmware.template }}
