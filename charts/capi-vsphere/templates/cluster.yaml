@@ -47,14 +47,14 @@ spec:
       datacenter: {{ .Values.vmware.datacenter }}
       datastore: {{ .Values.vmware.datastore }}
       diskGiB: 25
-      folder: CAPV
-      memoryMiB: 8192
+      folder: {{ .Values.vmware.folder }}
+      memoryMiB: {{ .Values.vmware.memoryMiB }}
       network:
         devices:
         - dhcp4: true
-          networkName: management
-      numCPUs: 2
-      resourcePool: '*/Resources'
+          networkName: {{ .Values.vmware.portgroup }}
+      numCPUs: {{ .Values.vmware.numCPUs }}
+      resourcePool: {{ .Values.vmware.resourcePool }}
       server: {{ .Values.vmware.vcenter }}
       storagePolicyName: ""
       template: {{ .Values.vmware.template }}
