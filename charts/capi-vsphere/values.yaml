@@ -7,9 +7,9 @@ vmware:
   username: svc-capv@vsphere.local
   template: ubuntu-2004-kube-v1.21.2+vmware.1
   portgroup: capv-net
-  resourcePool: '*/Resources'
+  resourcepool: '*/Resources'
   folder: CAPV
-  memoryMiB: 4096
+  memorymib: 4096
   numCPUs: 2
 
 cluster:
