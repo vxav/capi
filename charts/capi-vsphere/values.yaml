@@ -11,6 +11,7 @@ vmware:
   folder: CAPV
   memorymib: 4096
   numcpus: 2
+  storagepolicyname: "vSAN Default Storage Policy"
 
 cluster:
   name: default
