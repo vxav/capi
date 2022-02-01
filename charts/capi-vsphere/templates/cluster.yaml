@@ -413,6 +413,7 @@ stringData:
       csi-vsphere.conf: |+
         [Global]
         cluster-id = "default/{{ .Values.cluster.name }}"
+        insecure-flag = "1" # set to 1 if the vCenter uses a self-signed cert
 
         [VirtualCenter "{{ .Values.vmware.vcenter }}"]
         user = "{{ .Values.vmware.username }}"
