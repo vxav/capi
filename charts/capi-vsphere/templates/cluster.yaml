@@ -56,7 +56,7 @@ spec:
       numCPUs: {{ .Values.vmware.numcpus }}
       resourcePool: {{ .Values.vmware.resourcepool }}
       server: {{ .Values.vmware.vcenter }}
-      storagePolicyName: ""
+      storagePolicyName: {{ .Values.vmware.storagepolicyname }}
       template: {{ .Values.vmware.template }}
       thumbprint: {{ .Values.vmware.thumbprint }}
 ---
