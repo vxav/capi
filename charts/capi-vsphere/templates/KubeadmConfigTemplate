@@ -1,0 +1,25 @@
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: {{ .Values.cluster.name }}-md-0
+  namespace: {{ .Values.cluster.name }}
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          criSocket: /var/run/containerd/containerd.sock
+          kubeletExtraArgs:
+            cloud-provider: external
+          name: {{`'{{ ds.meta_data.hostname }}'`}}
+      preKubeadmCommands:
+      - hostname {{"{{ ds.meta_data.hostname }}"}}
+      - echo "::1         ipv6-localhost ipv6-loopback" >/etc/hosts
+      - echo "127.0.0.1   localhost" >>/etc/hosts
+      - echo {{"127.0.0.1   {{ ds.meta_data.hostname }}"}} >>/etc/hosts
+      - echo {{"{{ ds.meta_data.hostname }}"}} >/etc/hostname
+      users:
+      - name: capv
+        sshAuthorizedKeys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1yEQFBN4Kqll9sGD5F9iFq8EsriH+P1XBi1wyPC7ANarsmi/lmTYGHhwDRcMn23m9CqKeVEKnDgBcBdfZaVg7vWyZpJrUwKkQjhXWi2PJr7HTEpwz2tU8GImLkJPH8To7lGFnG8HMAEfw35qgQOizplP5cZV9f3lPZiy1aKf1lhbxnAYroL1gIJQizN/CoKN8+JJ8xTFRK6s3SmIcW2kCAa0TQPKboHurNwE+AvmV0SOCj8iCLB6wLAD8wRZq1tYenyB30HGchI7WXdSOSC9X0sHrwzLKRtoLUNhc5TlB/a1ip8VCSryVtbeB3vRh2ZhhfjJIWq+N436OGaL7eZMIgACKt9EgSQTy5LlJR1yMmjfKZURASpic9hxI2WezTRrm6NKQa7eUQi/ggZ+3eWApffSAlXZKQu+oZflJUJg4NOrKCYROFroHnlY3dpXPyMZyqP0PMO0RSbYpvEjns6F26eXBvMxv0zRKiYfvEYvGN4h/xuSFl3osV/+P0XGfNtE=
+        sudo: ALL=(ALL) NOPASSWD:ALL
