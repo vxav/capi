@@ -80,9 +80,9 @@ spec:
     - echo {{"{{ ds.meta_data.hostname }}"}} >/etc/hostname
     useExperimentalRetryJoin: true
     users:
-    - name: capv
+    - name: {{ .Values.ssh.user }}
       sshAuthorizedKeys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1yEQFBN4Kqll9sGD5F9iFq8EsriH+P1XBi1wyPC7ANarsmi/lmTYGHhwDRcMn23m9CqKeVEKnDgBcBdfZaVg7vWyZpJrUwKkQjhXWi2PJr7HTEpwz2tU8GImLkJPH8To7lGFnG8HMAEfw35qgQOizplP5cZV9f3lPZiy1aKf1lhbxnAYroL1gIJQizN/CoKN8+JJ8xTFRK6s3SmIcW2kCAa0TQPKboHurNwE+AvmV0SOCj8iCLB6wLAD8wRZq1tYenyB30HGchI7WXdSOSC9X0sHrwzLKRtoLUNhc5TlB/a1ip8VCSryVtbeB3vRh2ZhhfjJIWq+N436OGaL7eZMIgACKt9EgSQTy5LlJR1yMmjfKZURASpic9hxI2WezTRrm6NKQa7eUQi/ggZ+3eWApffSAlXZKQu+oZflJUJg4NOrKCYROFroHnlY3dpXPyMZyqP0PMO0RSbYpvEjns6F26eXBvMxv0zRKiYfvEYvGN4h/xuSFl3osV/+P0XGfNtE=
+      - {{ .Values.ssh.pubkey }}
       sudo: ALL=(ALL) NOPASSWD:ALL
   machineTemplate:
     infrastructureRef:
