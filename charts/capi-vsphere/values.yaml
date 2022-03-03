@@ -12,6 +12,7 @@ vmware:
   memorymib: 4096
   numcpus: 2
   storagepolicyname: "vSAN Default Storage Policy"
+  diskgib: 25
 
 ssh:
   user: xavier
