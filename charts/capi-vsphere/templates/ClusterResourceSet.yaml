@@ -31,4 +31,4 @@ spec:
   - kind: ConfigMap
     name: cpi-manifests
   - kind: ConfigMap
-    name: calico-configmap
+    name: antrea-configmap
