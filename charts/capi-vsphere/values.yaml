@@ -15,7 +15,7 @@ vmware:
   diskgib: 25
 
 ssh:
-  user: xavier
+  user: capv
   pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvKYb6bE+V2QXgOQKPbaL9ya8PKEc8YJBdfubajYz/ttHGiSVfQkP/qwRsGybp2w5wsxeBoaG7PlYaN5q6ZGS3T2CZZqTx/M/Ww3Sy3zvfMJWyzXRS/JQkQ2+kdBFDfWN7PuWytJUU6HjDqWDetfOGAnGJBoucRPIpY4kBK4iomRMw6/CZzzsAJGx3//2pUDqGbrHCBhrhga/giRplskR/Skr9bi/aG++GgS2hB/r2iJM+1cyFxpbtcoiH/L/WIAFUKXbANJO/2dh/LvwoETsXOKXSg+LLqoRuCZt+WzVt971pcyn00cOyvaxxBMnOki49mVsGEZPtsZvdc5oxbWEl9auVw2CDgOlSh6NUzm54aC/sS+RalWxO7+qR5kehA8yfKKf9KMPUlI5HPpa4+DBWdVC58YbVhAqANOGz1z1P1KmUbebarMjJVox3jw3bocjy4H0mPBwBI5O7PEV+aRPNRUzXghbbuqI2m4+ivmiPLtEm2xwI9bNOOcv5HZOXWjE=
 
 cluster:
