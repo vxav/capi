@@ -30,3 +30,5 @@ spec:
     name: cloud-provider-vsphere-credentials
   - kind: ConfigMap
     name: cpi-manifests
+  - kind: ConfigMap
+    name: calico-configmap
