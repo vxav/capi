@@ -9,7 +9,7 @@ spec:
       cloneMode: linkedClone
       datacenter: {{ .Values.vmware.datacenter }}
       datastore: {{ .Values.vmware.datastore }}
-      diskGiB: 25
+      diskGiB: {{ .Values.vmware.diskgib }}
       folder: {{ .Values.vmware.folder }}
       memoryMiB: {{ .Values.vmware.memorymib }}
       network:
