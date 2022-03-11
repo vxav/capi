@@ -4046,7 +4046,7 @@ data:
         #  Multicast: false
 
         # Enable managing external IPs of Services of LoadBalancer type.
-        #  ServiceExternalIP: false
+          ServiceExternalIP: true
 
         # Name of the OpenVSwitch bridge antrea-agent will create and use.
         # Make sure it doesn't conflict with your existing OpenVSwitch bridges.
@@ -4278,7 +4278,7 @@ data:
         #  AntreaIPAM: false
 
         # Enable managing external IPs of Services of LoadBalancer type.
-        #  ServiceExternalIP: false
+          ServiceExternalIP: true
 
         # The port for the antrea-controller APIServer to serve on.
         # Note that if it's set to another value, the `containerPort` of the `api` port of the
