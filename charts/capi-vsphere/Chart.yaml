@@ -2,7 +2,6 @@ apiVersion: v1
 name: capi-vsphere
 version: 1.0.0
 description: Deploy Kubernetes cluster to vSphere infrastructures with Cluster API vSphere provider (CAPV).
-sources: https://github.com/vxav/capi
 maintainers:
   - name: Xavier Avrillier
     email: xavier@vxav.fr
@@ -11,4 +10,3 @@ keywords:
   - capv
   - vmware
   - clusterapi
-home: https://github.com/vxav/capi/
